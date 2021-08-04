@@ -9,17 +9,12 @@ export default function Header() {
         color: var(--color-primary);
         padding: 1rem;
 
-        .header-content {
-          max-width: 900px;
-          margin: auto;
-        }
-
         span {
           color: var(--color-light);
         }
       `}
     >
-      <div className="header-content">
+      <div className="section">
         <h3>
           best<span>Frienz</span>{' '}
         </h3>
