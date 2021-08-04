@@ -3,11 +3,6 @@ import { useState, useEffect } from 'react'
 import { css } from '@emotion/react'
 import { Client } from '@petfinder/petfinder-js'
 
-const client = new Client({
-  apiKey: 'RFFq9XTQ5PCLFzT2jHmCkZPrFwaRU9DESTRwMglscACMMA1aR7',
-  secret: 'NEJltTpb6PDOBZA2yqIz6fOcSKC8aLENWAuLZoiu',
-})
-
 const ANIMALS = ['dog', 'cat', 'bird', 'rabbit', 'reptile']
 
 export default function SearchParams() {
@@ -16,23 +11,6 @@ export default function SearchParams() {
   const [breed, setBreed] = useState('')
   const [pets, setPets] = useState([])
   const breeds = []
-
-  useEffect(() => {
-    requestPets()
-  })
-
-  async function requestPets() {
-    await client.animal
-      .search()
-      .then(function (response) {
-        setPets(response.data.animals)
-        console.log(pets)
-      })
-      .catch(function (error) {
-        // Handle the error
-        console.error(error)
-      })
-  }
 
   return (
     <section
