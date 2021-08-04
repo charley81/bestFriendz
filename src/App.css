@@ -3,10 +3,12 @@
 * {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
 :root {
   --color-dark: #14080e;
+  --color-mid: #6c756b;
   --color-light: #ffffff;
   --color-primary: #f78764;
   --color-secondary: #c6d8d3;
@@ -48,9 +50,17 @@ li {
   cursor: pointer;
   font-family: var(--font-family);
   font-size: 1rem;
+  width: 100%;
+  transition: var(--transition);
 }
 
 .btn-primary {
   background: var(--color-primary);
   color: var(--color-dark);
+  border: 1px solid transparent;
+}
+
+.btn-primary:hover {
+  background: var(--color-light);
+  border: 1px solid var(--color-primary);
 }
