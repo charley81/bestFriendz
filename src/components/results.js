@@ -6,9 +6,10 @@ export default function Results({ pets }) {
   return (
     <div
       css={css`
+        margin-top: 5vh;
+
         h2 {
           text-align: center;
-          margin-top: 5vh;
         }
       `}
     >
