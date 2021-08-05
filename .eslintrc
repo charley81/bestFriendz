@@ -1,5 +1,6 @@
 {
   "extends": [
     "plugin:jsx-a11y/recommended"
-  ]
+  ],
+  "parser": "babel-eslint"
 }
