@@ -75,7 +75,12 @@ export default function SearchParams() {
         }
       `}
     >
-      <form>
+      <form
+        onSubmit={e => {
+          e.preventDefault()
+          requestPets()
+        }}
+      >
         <label htmlFor="location">
           Location
           <input
