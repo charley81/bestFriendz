@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react'
 import { css } from '@emotion/react'
 import { Client } from '@petfinder/petfinder-js'
 import useBreedList from './useBreedList'
-import Pet from './pet'
+import Results from './results'
 
 const client = new Client({
   apiKey: process.env.REACT_APP_PETFINDER_API_KEY,
@@ -132,18 +132,7 @@ export default function SearchParams() {
         </label>
         <button className="btn btn-primary">Search</button>
       </form>
-
-      {pets.map(pet => {
-        const { primary } = pet.breeds
-        return (
-          <Pet
-            key={pet.id}
-            animalType={pet.species}
-            name={pet.name}
-            breed={primary}
-          />
-        )
-      })}
+      <Results pets={pets} />
     </section>
   )
 }
