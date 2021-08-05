@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react'
 import { css } from '@emotion/react'
 import { Client } from '@petfinder/petfinder-js'
 import useBreedList from './useBreedList'
-import Pet from './pet'
+import Results from './results'
 
 const client = new Client({
   apiKey: process.env.REACT_APP_PETFINDER_API_KEY,
@@ -12,10 +12,15 @@ const client = new Client({
 
 export default function SearchParams() {
   const [location, setLocation] = useState('Boston, MA')
+  // type of animal i.e dog, cat, rabbit etc.
   const [animal, setAnimal] = useState('')
+  // breed of animal i.e dog => poodle
   const [breed, setBreed] = useState('')
+  // array of pets returned from api request
   const [pets, setPets] = useState([])
+  // a list of animal types to loop over and display animal select options i.e dog, cat, rabbit etc.
   const [animalTypesList, setAnimalTypesList] = useState([])
+  // custom hook used to request list of breeds of each animal from api
   const [breeds] = useBreedList(animal)
 
   // request list of animals anytime the animal state changes
@@ -75,7 +80,12 @@ export default function SearchParams() {
         }
       `}
     >
-      <form>
+      <form
+        onSubmit={e => {
+          e.preventDefault()
+          requestPets()
+        }}
+      >
         <label htmlFor="location">
           Location
           <input
@@ -122,18 +132,7 @@ export default function SearchParams() {
         </label>
         <button className="btn btn-primary">Search</button>
       </form>
-
-      {pets.map(pet => {
-        const { primary } = pet.breeds
-        return (
-          <Pet
-            key={pet.id}
-            animalType={pet.species}
-            name={pet.name}
-            breed={primary}
-          />
-        )
-      })}
+      <Results pets={pets} />
     </section>
   )
 }
