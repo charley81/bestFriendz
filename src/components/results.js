@@ -7,6 +7,9 @@ export default function Results({ pets }) {
     <div
       css={css`
         margin-top: 5vh;
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+        gap: 1rem;
 
         h2 {
           text-align: center;
