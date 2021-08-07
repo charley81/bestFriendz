@@ -1,8 +1,9 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react'
+import comingSoon from '../images/coming-soon.jpeg'
 
 export default function Pet({ name, animalType, breed, id, images, location }) {
-  let hero = 'https://source.unsplash.com/1600x900/?animal'
+  let hero = comingSoon
   const image = images.map(img => img.full)[0]
 
   if (images.length) {
@@ -13,28 +14,38 @@ export default function Pet({ name, animalType, breed, id, images, location }) {
     <a
       href={`/details/${id}`}
       css={css`
-        display: block;
-        border: 1px solid var(--color-mid);
+        color: var(--color-dark);
+        display: flex;
+        align-items: center;
         box-shadow: var(--box-shadow);
-        border-radius: var(--border-radius);
         padding: 1rem;
-        margin: 1rem 0;
+        border-radius: var(--border-radius);
 
-        .pet-image {
-          height: 200px;
+        .image-container {
+          height: 150px;
+          width: 150px;
           overflow: hidden;
+          margin-right: 1rem;
+
+          img {
+            height: 150px;
+            border-radius: 50%;
+          }
         }
 
-        img {
-          position: center;
+        .animal {
+          color: var(--color-mid);
         }
       `}
     >
-      <div className="pet-image">
+      <div className="image-container">
         <img src={hero} alt={name} />
       </div>
-
-      <h3>{name}</h3>
+      <div>
+        <h3>{name}</h3>
+        <p className="animal">{`${animalType} - ${breed}`}</p>
+        <p>{location}</p>
+      </div>
     </a>
   )
 }

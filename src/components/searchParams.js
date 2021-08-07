@@ -66,7 +66,7 @@ export default function SearchParams() {
         padding: 1rem;
 
         form {
-          max-width: 600px;
+          max-width: var(--max-width);
           margin: auto;
         }
         input,
