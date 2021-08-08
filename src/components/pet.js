@@ -1,5 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react'
+import { Link } from 'react-router-dom'
 import comingSoon from '../images/coming-soon.jpeg'
 
 export default function Pet({ name, animalType, breed, id, images, location }) {
@@ -11,8 +12,8 @@ export default function Pet({ name, animalType, breed, id, images, location }) {
   }
 
   return (
-    <a
-      href={`/details/${id}`}
+    <Link
+      to={`/details/${id}`}
       css={css`
         color: var(--color-dark);
         display: flex;
@@ -46,6 +47,6 @@ export default function Pet({ name, animalType, breed, id, images, location }) {
         <p className="animal">{`${animalType} - ${breed}`}</p>
         <p>{location}</p>
       </div>
-    </a>
+    </Link>
   )
 }

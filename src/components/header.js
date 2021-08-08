@@ -1,13 +1,17 @@
 /** @jsxImportSource @emotion/react */
 import { css, jsx } from '@emotion/react'
+import { Link } from 'react-router-dom'
 
 export default function Header() {
   return (
     <header
       css={css`
         background: var(--color-dark);
-        color: var(--color-primary);
         padding: 1rem;
+
+        a {
+          color: var(--color-primary);
+        }
 
         span {
           color: var(--color-light);
@@ -15,9 +19,9 @@ export default function Header() {
       `}
     >
       <div className="section">
-        <h3>
+        <Link to="/">
           best<span>Frienz</span>{' '}
-        </h3>
+        </Link>
       </div>
     </header>
   )
