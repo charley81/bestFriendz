@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import SearchParams from './components/searchParams'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import Header from './components/header'
-import Details from './detail'
+import Details from './details'
 import './App.css'
 
 function App() {

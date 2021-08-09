@@ -1,10 +1,11 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react'
 import { Link } from 'react-router-dom'
-import comingSoon from '../images/coming-soon.jpeg'
+import comingSoon from '../images/coming-soon.jpg'
 
 export default function Pet({ name, animalType, breed, id, images, location }) {
   let hero = comingSoon
+
   const image = images.map(img => img.full)[0]
 
   if (images.length) {
