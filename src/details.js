@@ -4,6 +4,7 @@ import { css } from '@emotion/react'
 import { withRouter } from 'react-router'
 import { Client } from '@petfinder/petfinder-js'
 import Carousel from './components/carousel'
+import Modal from './components/modal'
 
 const client = new Client({
   apiKey: process.env.REACT_APP_PETFINDER_API_KEY,
@@ -13,6 +14,7 @@ const client = new Client({
 class Details extends Component {
   state = {
     loading: true,
+    showModal: false,
   }
 
   async componentDidMount() {
@@ -30,12 +32,18 @@ class Details extends Component {
       })
   }
 
+  toggleModal = () => this.setState({ showModal: !this.state.showModal })
+  adopt = () =>
+    (window.location =
+      'https://www.petfinder.com/search/dogs-for-adoption/?distance=100')
+  // adopt = () => (window.location = 'https://google.com')
+
   render() {
     if (this.state.loading) {
       return <h2>Loading...</h2>
     }
 
-    const { name, species, description, url, photos } = this.state
+    const { name, species, description, url, photos, showModal } = this.state
     const { primary } = this.state.breeds
     const contact = this.state.contact
     const { address } = contact
@@ -86,11 +94,22 @@ class Details extends Component {
           </h3>
         </div>
 
-        <a href={url} className="btn btn-primary">
+        <button className="btn btn-primary" onClick={this.toggleModal}>
           ADOPT {name}
-        </a>
+        </button>
 
         <p>{description}</p>
+        {showModal ? (
+          <Modal>
+            <div>
+              <h1>Would you like to adopt {name}</h1>
+              <div className="buttons">
+                <button onClick={this.adopt}>Yes</button>
+                <button onClick={this.toggleModal}>No</button>
+              </div>
+            </div>
+          </Modal>
+        ) : null}
       </div>
     )
   }

@@ -1,27 +1,29 @@
+import './App.css'
+import Details from './details'
+import Header from './components/header'
 import { useState, useEffect } from 'react'
+import ThemeContext from './context/theme-context'
 import SearchParams from './components/searchParams'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
-import Header from './components/header'
-import Details from './details'
-import './App.css'
 
 function App() {
-  const [animal, setAnimal] = useState('dog')
-
+  const themeHook = useState('darkblue')
   return (
-    <div>
-      <Router>
-        <Header />
-        <Switch>
-          <Route path="/details/:id">
-            <Details />
-          </Route>
-          <Route path="/">
-            <SearchParams />
-          </Route>
-        </Switch>
-      </Router>
-    </div>
+    <ThemeContext.Provider value={themeHook}>
+      <div>
+        <Router>
+          <Header />
+          <Switch>
+            <Route path="/details/:id">
+              <Details />
+            </Route>
+            <Route path="/">
+              <SearchParams />
+            </Route>
+          </Switch>
+        </Router>
+      </div>
+    </ThemeContext.Provider>
   )
 }
 
