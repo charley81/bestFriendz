@@ -39,6 +39,7 @@ class Carousel extends Component {
 
           img {
             height: 400px;
+            border-radius: var(--border-radius);
           }
 
           .carousel-small {
@@ -51,16 +52,17 @@ class Carousel extends Component {
               display: inline-block;
               cursor: pointer;
               border: 2px solid var(--color-dark);
-              margin-right: 0.25rem;
+              margin-right: 0.5rem;
             }
           }
 
           @media (min-width: 600px) {
             flex-direction: row;
-            justify-content: space-between;
+            justify-content: flex-start;
 
             img {
               max-width: 50%;
+              margin-right: 1rem;
             }
           }
         `}
