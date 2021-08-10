@@ -55,30 +55,36 @@ class Details extends Component {
             margin: 1rem auto;
           }
 
+          .info {
+            margin: 2rem 0;
+          }
+
           p {
             margin: 1rem 0;
           }
 
-          button {
+          .btn {
             &:hover {
               border: 1px solid var(--color-dark);
             }
 
             a {
               color: var(--color-dark);
-              margin: 2rem 0 0;
+              margin: 2rem 0;
             }
           }
         `}
       >
-        <Carousel photos={[]} />
-        <h1>{name}</h1>
-        <h3>
-          {species} - {primary}
-        </h3>
-        <h3>
-          {city},{state}
-        </h3>
+        <Carousel photos={photos} />
+        <div className="info">
+          <h1>{name}</h1>
+          <h3>
+            {species} - {primary}
+          </h3>
+          <h3>
+            {city},{state}
+          </h3>
+        </div>
 
         <a href={url} className="btn btn-primary">
           ADOPT {name}
@@ -91,21 +97,3 @@ class Details extends Component {
 }
 
 export default withRouter(Details)
-
-// const arr = [
-//   {
-//     small: 'https://example-pic.com/123',
-//     med: 'https://example-pic.com/123',
-//     large: 'https://example-pic.com/123',
-//   },
-//   {
-//     small: 'https://example-pic.com/123',
-//     med: 'https://example-pic.com/123',
-//     large: 'https://example-pic.com/123',
-//   },
-//   {
-//     small: 'https://example-pic.com/123',
-//     med: 'https://example-pic.com/123',
-//     large: 'https://example-pic.com/123',
-//   },
-// ]
