@@ -35,12 +35,12 @@ class Details extends Component {
       return <h2>Loading...</h2>
     }
 
-    const { name, species, description, url } = this.state
+    const { name, species, description, url, photos } = this.state
     const { primary } = this.state.breeds
     const contact = this.state.contact
     const { address } = contact
     const { city, state } = address
-    console.log(this.state)
+
     return (
       <div
         css={css`
@@ -71,6 +71,7 @@ class Details extends Component {
           }
         `}
       >
+        <Carousel photos={[]} />
         <h1>{name}</h1>
         <h3>
           {species} - {primary}
@@ -90,3 +91,21 @@ class Details extends Component {
 }
 
 export default withRouter(Details)
+
+// const arr = [
+//   {
+//     small: 'https://example-pic.com/123',
+//     med: 'https://example-pic.com/123',
+//     large: 'https://example-pic.com/123',
+//   },
+//   {
+//     small: 'https://example-pic.com/123',
+//     med: 'https://example-pic.com/123',
+//     large: 'https://example-pic.com/123',
+//   },
+//   {
+//     small: 'https://example-pic.com/123',
+//     med: 'https://example-pic.com/123',
+//     large: 'https://example-pic.com/123',
+//   },
+// ]
